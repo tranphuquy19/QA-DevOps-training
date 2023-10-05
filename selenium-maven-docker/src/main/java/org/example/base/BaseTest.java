@@ -55,9 +55,20 @@ public class BaseTest {
         if (!Objects.equals(this.CHROME_PATH, "") && this.CHROME_PATH != null) {
             options.setBinary(this.CHROME_PATH);
         }
-        for (String option : this.chromeOptions) {
-            options.addArguments(option);
+
+        if (Objects.equals(Config.getInstance().getVariable("ENV"), "docker")) {
+            options.addArguments("--headless");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--disable-infobars");
+        } else {
+            for (String option : this.chromeOptions) {
+                options.addArguments(option);
+            }
         }
+
         System.setProperty("webdriver.chrome.driver", this.CHROME_DRIVE_PATH);
         driver = new ChromeDriver(options);
         System.out.println("URL: " + URL);

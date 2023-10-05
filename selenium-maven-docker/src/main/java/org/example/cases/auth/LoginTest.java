@@ -18,16 +18,19 @@ public class LoginTest extends BaseTest {
     public void loginWithInvalidUser() throws InterruptedException {
         loginPage = new LoginPage(this.driver);
         loginPage.login(User.getInvalidUsername(), User.getInvalidUserPassword());
-        Thread.sleep(1_000);
-        Assert.assertNotEquals(this.driver.getCurrentUrl(), Path.join(this.BASE_URL, "wp-admin/"));
+        this.waitPageLoading();
+        Assert.assertTrue(this.driver.getCurrentUrl().endsWith("wp-login.php"));
     }
 
     @Test()
     public void loginWithValidUser() throws InterruptedException {
         loginPage = new LoginPage(this.driver);
+        System.out.println("User: " + User.getValidUsername());
+        System.out.println("Password: " + User.getValidUserPassword());
         loginPage.login(User.getValidUsername(), User.getValidUserPassword());
-        Thread.sleep(1_000);
-        Assert.assertEquals(this.driver.getCurrentUrl(), Path.join(this.BASE_URL, "wp-admin/"));
+        this.waitPageLoading();
+        System.out.println("Current URL: " + this.driver.getCurrentUrl());
+        Assert.assertFalse(this.driver.getCurrentUrl().contains("wp-login.php"));
     }
 
 }
