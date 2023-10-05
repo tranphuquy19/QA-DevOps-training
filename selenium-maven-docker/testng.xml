@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite 1" verbose="1">
+    <test name="Test 1">
+        <classes>
+<!--            <class name="org.example.cases.auth.LoginTest">-->
+<!--                <methods>-->
+<!--                    <include name="loginWithValidUser"/>-->
+<!--                    <include name="loginWithInvalidUser"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="org.example.cases.post.AddNewPost">
+                <methods>
+                    <include name="addNewPost"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
