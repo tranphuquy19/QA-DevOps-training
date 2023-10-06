@@ -11,7 +11,7 @@ public class LoginTest extends BaseTest {
     private LoginPage loginPage;
 
     public LoginTest () {
-        super("wp-login.php");
+        super("login");
     }
 
     @Test()
@@ -19,7 +19,8 @@ public class LoginTest extends BaseTest {
         loginPage = new LoginPage(this.driver);
         loginPage.login(User.getInvalidUsername(), User.getInvalidUserPassword());
         this.waitPageLoading();
-        Assert.assertTrue(this.driver.getCurrentUrl().endsWith("wp-login.php"));
+        System.out.println("[loginWithInvalidUser] Current URL: " + this.driver.getCurrentUrl());
+        Assert.assertTrue(this.driver.getCurrentUrl().endsWith("login"));
     }
 
     @Test()
@@ -29,8 +30,8 @@ public class LoginTest extends BaseTest {
         System.out.println("Password: " + User.getValidUserPassword());
         loginPage.login(User.getValidUsername(), User.getValidUserPassword());
         this.waitPageLoading();
-        System.out.println("Current URL: " + this.driver.getCurrentUrl());
-        Assert.assertFalse(this.driver.getCurrentUrl().contains("wp-login.php"));
+        System.out.println("[loginWithValidUser] Current URL: " + this.driver.getCurrentUrl());
+        Assert.assertTrue(this.driver.getCurrentUrl().endsWith("welcome"));
     }
 
 }

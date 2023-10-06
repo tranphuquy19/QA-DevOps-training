@@ -2,6 +2,7 @@ package org.example.cases.post;
 
 import org.example.base.BaseTest;
 import org.example.shared.Path;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.example.pages.AddNewPostPage;
@@ -12,7 +13,7 @@ public class AddNewPost extends BaseTest {
     private AddNewPostPage postPage;
 
     public AddNewPost() {
-        super("wp-login.php");
+        super("login");
     }
 
     @BeforeMethod()
@@ -23,12 +24,10 @@ public class AddNewPost extends BaseTest {
 
     @Test()
     public void addNewPost() throws InterruptedException {
-        this.driver.get(Path.join(this.BASE_URL, "wp-admin/post-new.php"));
+        this.driver.get(Path.join(this.BASE_URL, "new-post"));
         AddNewPostPage addNewPostPage = new AddNewPostPage(this.driver);
         addNewPostPage.addNewPost("Test title", "Test Content");
-        Thread.sleep(10_000);
-        addNewPostPage.gotoDetailPage();
-        Thread.sleep(10_000);
+        Assert.assertEquals(this.driver.getCurrentUrl(), Path.join(this.BASE_URL, "posts"));
     }
 
 }

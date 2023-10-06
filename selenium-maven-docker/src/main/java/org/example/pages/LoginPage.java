@@ -8,13 +8,13 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
     WebDriver driver;
 
-    @FindBy(css = "#user_login")
+    @FindBy(css = "#username")
     WebElement txtEmail;
 
-    @FindBy(css = "#user_pass")
+    @FindBy(css = "#password")
     WebElement txtPassword;
 
-    @FindBy(css = "#wp-submit")
+    @FindBy(css = "#submit_btn")
     WebElement btnLogin;
 
     public LoginPage(WebDriver driver) {

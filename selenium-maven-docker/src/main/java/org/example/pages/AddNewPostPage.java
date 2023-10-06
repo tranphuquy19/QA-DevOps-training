@@ -10,24 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AddNewPostPage {
-    @FindBy(id = "content_ifr")
-    WebElement iframe;
-
-    @FindBy(css = "#post-title-0")
+    @FindBy(css = "#title")
     @CacheLookup //Locator được gọi nhiều lần nếu WebElement được gọi nhiều lần (query many times). Dùng annotation để cacheElement
     WebElement txtTitle;
 
-    @FindBy(xpath = "/html/body/div[1]/div[2]/div[2]/div[1]/div[3]/div[1]/div/div/div[1]/div/div[1]/div[2]/div[1]/div[4]/div[2]/div/div/div[2]/div[2]/div[2]/div/p")
+    @FindBy(css = "#body")
     WebElement txtContent;
 
-    @FindBy(css = "#publish")
+    @FindBy(css = "#submit-btn")
     WebElement btnSubmit;
-
-    @FindBy(css = "#message a")
-    WebElement linkNewPost;
-
-    @FindBy(css = "#edit-slug-box > strong")
-    WebElement permalink;
 
     WebDriver driver;
     WebDriverWait waiter;
@@ -47,9 +38,5 @@ public class AddNewPostPage {
         txtContent.sendKeys(content);
 
         btnSubmit.submit();
-    }
-
-    public void gotoDetailPage() {
-        linkNewPost.click();
     }
 }
