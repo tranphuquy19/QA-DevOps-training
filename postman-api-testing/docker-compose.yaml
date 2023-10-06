@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  express-app:
+    profiles:
+      - default
+    image: express-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - api-testing-network
+
+  newman-app:
+    profiles:
+      - test
+    image: newman-app:latest
+    build:
+      context: .
+      dockerfile: newman.Dockerfile
+    volumes:
+      - ./postman:/etc/newman
+    networks:
+      - api-testing-network
+    command:
+      run collection.json -e environment.json -r html,cli --reporter-html-export reports/report.html
+
+networks:
+  api-testing-network:
+    driver: bridge
