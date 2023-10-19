@@ -26,8 +26,8 @@ services:
       - ./postman:/etc/newman
     networks:
       - api-testing-network
-    command:
-      run collection.json -e environment.json -r html,cli --reporter-html-export reports/report.html
+    entrypoint:
+      newman run collection.json -e docker.environment.json -r html,cli --reporter-html-export reports/report.html
 
 networks:
   api-testing-network:

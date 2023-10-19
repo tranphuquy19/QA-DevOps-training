@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Config {
     private static Config instance;
-    private Map<String, String> variables;
+    private final Map<String, String> variables;
 
     private Config() {
         variables = new HashMap<>();
@@ -22,7 +22,7 @@ public class Config {
         return variables.get(key);
     }
 
-    public String setVariable(String key, String value) {
-        return variables.put(key, value);
+    public void setVariable(String key, String value) {
+        variables.put(key, value);
     }
 }

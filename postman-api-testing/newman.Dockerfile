@@ -8,7 +8,7 @@ WORKDIR /app
 RUN npm install -g newman-reporter-html
 
 # Copy the environment and collection JSON files to the container
-COPY environment.json collection.json ./
+COPY docker.environment.json collection.json ./
 
 # Run the newman command with the environment and collection files
-# CMD ["run", "collection.json", "--environment", "environment.json"]
+ENTRYPOINT ["newman", "run", "collection.json", "--environment", "docker.environment.json"]
