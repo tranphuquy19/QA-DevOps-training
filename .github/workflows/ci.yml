@@ -5,14 +5,20 @@ on:
     branches:
     - master
     - dev/add-ci-script
+  pull_request:
+    branches:
+    - master
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: selenium-maven-docker
     steps:
     - uses: actions/checkout@v2
     - name: Build selenium-maven-docker
       run: |
-        cd selenium-maven-docker
+        # cd selenium-maven-docker
         # Check if docker-compose is installed
         if ! [ -x "$(command -v docker-compose)" ]; then
           echo 'Error: docker-compose is not installed.' >&2
@@ -24,11 +30,11 @@ jobs:
         docker-compose -f docker-compose.yml build selenium
     - name: Start web-app
       run: |
-        cd selenium-maven-docker
+        # cd selenium-maven-docker
         docker-compose --profile default -f docker-compose.yml up -d
     - name: Start selenium
       run: |
-        cd selenium-maven-docker
+        # cd selenium-maven-docker
         docker-compose --profile test -f docker-compose.yml up
         echo 'The test-output directory is mounted to the host machine'
         echo 'test-output directory contents:'
