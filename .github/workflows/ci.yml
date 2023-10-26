@@ -23,7 +23,10 @@ jobs:
         # Build selenium image
         docker-compose -f docker-compose.yml build selenium
     - name: Start web-app
-      run: "docker-compose --profile default -f docker-compose.yml up -d \n"
+      run: |
+        pwd
+        cd selenium-maven-docker
+        docker-compose --profile default -f docker-compose.yml up -d
     - name: Start selenium
       run: |
         docker-compose --profile test -f docker-compose.yml up
