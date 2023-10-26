@@ -1,0 +1,38 @@
+name: GitHub Actions CI Selenium Docker Example
+# on: [push]
+on:
+  push:
+    branches:
+    - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build selenium-maven-docker
+      run: |
+        cd selenium-maven-docker
+        # Check if docker-compose is installed
+        if ! [ -x "$(command -v docker-compose)" ]; then
+          echo 'Error: docker-compose is not installed.' >&2
+          exit 1
+        fi
+        # Build web-app image
+        docker-compose -f docker-compose.yml build web-app
+        # Build selenium image
+        docker-compose -f docker-compose.yml build selenium
+    - name: Start web-app
+      run: "docker-compose --profile default -f docker-compose.yml up -d \n"
+    - name: Start selenium
+      run: |
+        docker-compose --profile test -f docker-compose.yml up
+        echo 'The test-output directory is mounted to the host machine'
+        echo 'test-output directory contents:'
+        ls -l test-output
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-output
+        path: selenium-maven-docker/test-output
+
+
