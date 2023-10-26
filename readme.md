@@ -1,6 +1,15 @@
 # DevOps Principles and Practices for QA Professionals
 
-## Requirements
+## Table of contents
+
+- [DevOps Principles and Practices for QA Professionals](#devops-principles-and-practices-for-qa-professionals)
+  - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Step by step](#step-by-step)
+  - [Postman performance testing](#postman-performance-testing)
+
+
+## Prerequisites
 
 - Java version 11 or higher
 - [Node.js](https://nodejs.org/en/) version 12 or higher
