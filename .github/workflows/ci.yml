@@ -24,11 +24,11 @@ jobs:
         docker-compose -f docker-compose.yml build selenium
     - name: Start web-app
       run: |
-        pwd
         cd selenium-maven-docker
         docker-compose --profile default -f docker-compose.yml up -d
     - name: Start selenium
       run: |
+        cd selenium-maven-docker
         docker-compose --profile test -f docker-compose.yml up
         echo 'The test-output directory is mounted to the host machine'
         echo 'test-output directory contents:'
