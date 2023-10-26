@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - master
+    - dev/add-ci-script
 jobs:
   build:
     runs-on: ubuntu-latest
