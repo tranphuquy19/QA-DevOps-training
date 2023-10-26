@@ -1,5 +1,8 @@
 name: GitHub Actions CI Selenium Docker Example
 # on: [push]
+permissions: 
+  checks: write
+  pull-requests: write
 on:
   push:
     branches:
