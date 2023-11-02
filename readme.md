@@ -5,9 +5,7 @@
 - [DevOps Principles and Practices for QA Professionals](#devops-principles-and-practices-for-qa-professionals)
   - [Table of contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
-  - [Step by step](#step-by-step)
-  - [Session 3: Kubernetes](#session-3-kubernetes)
-  - [Postman performance testing](#postman-performance-testing)
+  - [Session 4: Kubernetes](#session-4-kubernetes)
 
 
 ## Prerequisites
@@ -21,19 +19,7 @@
 - Newman (Postman CLI)
 - Maven version 3.6.3 or higher
 
-## Step by step
+## Session 4: Kubernetes
 
-1. Clone this repository
+- [Goto session 4](testkube/README.md)
 
-```bash
-git clone git@github.com:tranphuquy19/QA-DevOps-training.git
-```
-
-## Session 3: Kubernetes
-
-- [Goto session 3](testkube/README.md)
-
-
-## Postman performance testing
-
-![img](imgs/postman-performance-testing.png)

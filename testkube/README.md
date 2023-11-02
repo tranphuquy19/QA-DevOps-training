@@ -112,6 +112,10 @@ cd testkube
 k3d cluster create -c k3d-config.yaml
 ```
 
+**How to stop the cluster**: `k3d cluster stop local`<br/>
+**How to start the cluster**: `k3d cluster start local`<br/>
+**How to delete the cluster**: `k3d cluster delete local`<br/>
+
 8. Deploy Rancher to the cluster
 
 ```bash
@@ -138,3 +142,33 @@ cd web-app
 # Deploy the web application to the cluster
 kubectl apply -f app.yaml
 ```
+
+10. Test the web application with Testkube.io
+
+Sign up for a free account at [https://testkube.io](https://testkube.io). Then create a new environment.
+
+![Testkube.io](imgs/1.png)
+
+![Testkube.io](imgs/2.png)
+
+![Testkube.io](imgs/3.png)
+
+![Testkube.io](imgs/4.png)
+
+![Testkube.io](imgs/5.png)
+
+![Testkube.io](imgs/6.png)
+
+11. Create a new test (Postman api test)
+
+![Testkube.io](imgs/7.png)
+
+![Testkube.io](imgs/8.png)
+
+12. Run the test
+
+![Testkube.io](imgs/9.png)
+
+13. Result
+
+![Testkube.io](imgs/10.png)
