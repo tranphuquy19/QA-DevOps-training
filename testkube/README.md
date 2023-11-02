@@ -12,6 +12,7 @@
     - [5. Change directory to `postman-api-testing`](#5-change-directory-to-postman-api-testing)
     - [6. Build and publish the docker image](#6-build-and-publish-the-docker-image)
       - [6.1 Build the docker image](#61-build-the-docker-image)
+      - [6.2 Publish the docker image to docker hub](#62-publish-the-docker-image-to-docker-hub)
     - [7. Create a k3d cluster](#7-create-a-k3d-cluster)
     - [8. Deploy Rancher to the cluster](#8-deploy-rancher-to-the-cluster)
     - [9. Deploy the web application to the cluster](#9-deploy-the-web-application-to-the-cluster)
@@ -106,7 +107,7 @@ docker build -f Dockerfile -t tranphuquy103/web-app-qa-training:1.0.0 .
 
 This will build the docker image with name `tranphuquy103/web-app-qa-training` and tag `1.0.0`. `tranphuquy103` is my docker hub username, you can change it to your docker hub username. You can change the tag to any tag you want.
 
-6.2 Publish the docker image to docker hub
+#### 6.2 Publish the docker image to docker hub
 
 First, login to docker hub. You will be prompted for username and password. How to login to docker hub: [https://www.howtogeek.com/devops/how-to-login-to-docker-hub-and-private-registries-with-the-docker-cli/](https://www.howtogeek.com/devops/how-to-login-to-docker-hub-and-private-registries-with-the-docker-cli/)
 
