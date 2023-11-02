@@ -1,6 +1,25 @@
 # Kubernetes Introduction - How to deploy a web application to Kubernetes and test it with Postman/Newman
 
 ## Table of contents
+- [Kubernetes Introduction - How to deploy a web application to Kubernetes and test it with Postman/Newman](#kubernetes-introduction---how-to-deploy-a-web-application-to-kubernetes-and-test-it-with-postmannewman)
+  - [Table of contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Step by step](#step-by-step)
+    - [1. Create a folder for this session](#1-create-a-folder-for-this-session)
+    - [2. Create a Vagrantfile with the following content](#2-create-a-vagrantfile-with-the-following-content)
+    - [3. Start the VM](#3-start-the-vm)
+    - [4. In the VM, clone this repository](#4-in-the-vm-clone-this-repository)
+    - [5. Change directory to `postman-api-testing`](#5-change-directory-to-postman-api-testing)
+    - [6. Build and publish the docker image](#6-build-and-publish-the-docker-image)
+      - [6.1 Build the docker image](#61-build-the-docker-image)
+    - [7. Create a k3d cluster](#7-create-a-k3d-cluster)
+    - [8. Deploy Rancher to the cluster](#8-deploy-rancher-to-the-cluster)
+    - [9. Deploy the web application to the cluster](#9-deploy-the-web-application-to-the-cluster)
+    - [10. Test the web application with Testkube.io](#10-test-the-web-application-with-testkubeio)
+    - [11. Create a new test (Postman api test)](#11-create-a-new-test-postman-api-test)
+    - [12. Run the test](#12-run-the-test)
+    - [13. Result](#13-result)
+
 
 ## Prerequisites
 
@@ -19,14 +38,14 @@ Note: Git, Docker, K3d, kubectl, Helm are already installed in the VM.
 
 ## Step by step
 
-1. Create a folder for this session
+### 1. Create a folder for this session
 
 ```bash
 mkdir session3
 cd session3
 ```
 
-2. Create a Vagrantfile with the following content
+### 2. Create a Vagrantfile with the following content
 
 ```rb
 Vagrant.configure("2") do |config|
@@ -46,7 +65,7 @@ Note:
   - The VM needs at least 8GB of RAM and 4 CPUs to run smoothly.
 
 
-3. Start the VM
+### 3. Start the VM
 
 ```bash
 vagrant up
@@ -64,22 +83,22 @@ vagrant box add ubuntu2204desktop-k3d-k8s-docker-1.0.0.box --name tranphuquy19/u
 
 And run `vagrant up` again.
 
-4. In the VM, clone this repository
+### 4. In the VM, clone this repository
 
 ```bash
 cd Desktop
 git clone https://github.com/tranphuquy19/QA-DevOps-training.git
 ```
 
-5. Change directory to `postman-api-testing`
+### 5. Change directory to `postman-api-testing`
 
 ```bash
 cd postman-api-testing
 ```
 
-6. Build and publish the docker image
+### 6. Build and publish the docker image
 
-6.1 Build the docker image
+#### 6.1 Build the docker image
 
 ```bash
 docker build -f Dockerfile -t tranphuquy103/web-app-qa-training:1.0.0 .
@@ -103,7 +122,7 @@ Then, push the docker image to docker hub
 docker push tranphuquy103/web-app-qa-training:1.0.0
 ```
 
-7. Create a k3d cluster
+### 7. Create a k3d cluster
 
 ```bash
 # Cd to the folder testkube in the repository
@@ -116,7 +135,7 @@ k3d cluster create -c k3d-config.yaml
 **How to start the cluster**: `k3d cluster start local`<br/>
 **How to delete the cluster**: `k3d cluster delete local`<br/>
 
-8. Deploy Rancher to the cluster
+### 8. Deploy Rancher to the cluster
 
 ```bash
 # Cd to the folder testkube/rancher in the repository
@@ -134,7 +153,7 @@ kubectl apply -f rancher.svc.yaml
 
 This will take a while to install Rancher to the cluster. After Rancher is installed, you can access Rancher at [https://localhost:8901](https://localhost:8901). You will be prompted to create an admin password. After that, you can login to Rancher with username/password: `admin/mgplL6DTziwhJ2cf`
 
-9. Deploy the web application to the cluster
+### 9. Deploy the web application to the cluster
 
 ```bash
 # Cd to the folder testkube/web-app in the repository
@@ -143,7 +162,7 @@ cd web-app
 kubectl apply -f app.yaml
 ```
 
-10. Test the web application with Testkube.io
+### 10. Test the web application with Testkube.io
 
 Sign up for a free account at [https://testkube.io](https://testkube.io). Then create a new environment.
 
@@ -159,16 +178,16 @@ Sign up for a free account at [https://testkube.io](https://testkube.io). Then c
 
 ![Testkube.io](imgs/6.png)
 
-11. Create a new test (Postman api test)
+### 11. Create a new test (Postman api test)
 
 ![Testkube.io](imgs/7.png)
 
 ![Testkube.io](imgs/8.png)
 
-12. Run the test
+### 12. Run the test
 
 ![Testkube.io](imgs/9.png)
 
-13. Result
+### 13. Result
 
 ![Testkube.io](imgs/10.png)
