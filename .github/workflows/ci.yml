@@ -1,5 +1,8 @@
 name: GitHub Actions CI Selenium Docker Example
 # on: [push]
+permissions: 
+  checks: write
+  pull-requests: write
 on:
   push:
     branches:
@@ -44,5 +47,9 @@ jobs:
       with:
         name: test-output
         path: selenium-maven-docker/test-output
-
-
+    - name: Publish test results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          selenium-maven-docker/test-output/surefire-reports/junitreports/*.xml
