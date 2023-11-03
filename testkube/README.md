@@ -20,6 +20,7 @@
     - [11. Create a new test (Postman api test)](#11-create-a-new-test-postman-api-test)
     - [12. Run the test](#12-run-the-test)
     - [13. Result](#13-result)
+  - [References](#references)
 
 
 ## Prerequisites
@@ -163,6 +164,8 @@ cd web-app
 kubectl apply -f app.yaml
 ```
 
+Setup DNS server pointing to the cluster. Ex: http://qa-webapp.doracoder.dora/login
+
 ### 10. Test the web application with Testkube.io
 
 Sign up for a free account at [https://testkube.io](https://testkube.io). Then create a new environment.
@@ -192,3 +195,9 @@ Sign up for a free account at [https://testkube.io](https://testkube.io). Then c
 ### 13. Result
 
 ![Testkube.io](imgs/10.png)
+
+## References
+
+1. https://devopsvn.tech/
+2. https://www.slideshare.net/EdurekaIN/what-is-kubernetes-kubernetes-introduction-kubernetes-tutorial-for-beginners-edureka
+3. https://www.slideshare.net/Sparkbit/kubernetes-introduction-133390463
