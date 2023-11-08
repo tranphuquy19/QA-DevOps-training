@@ -3,9 +3,10 @@ on:
   push:
     paths:
     - 'serverless/**'
+    - '.github/workflows/**'
 
 jobs:
-  track_changes:
+  build_publish_test:
     runs-on: ubuntu-latest
     defaults:
       run:
