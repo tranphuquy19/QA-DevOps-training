@@ -1,4 +1,4 @@
-name: Serverless Folder Changes
+name: Deploy and Test Serverless Application - Todo App
 on:
   push:
     paths:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: serverless
+        working-directory: serverless/todo-api
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
