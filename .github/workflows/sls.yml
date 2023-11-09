@@ -13,11 +13,7 @@ jobs:
         working-directory: serverless/todo-api
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-    # - name: Track changes
-    #   run: |
-    #       echo "The following files have been changed:"
-    #       git diff --name-only HEAD^ HEAD serverless/
+      uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: '18'
@@ -43,7 +39,7 @@ jobs:
         newman run collection.json --env-var API_GATEWAY_URL=${{ env.API_GATEWAY_URL }} --reporters cli,htmlextra --reporter-htmlextra-export newman-report.html || EXIT_CODE=$?
         echo "EXIT_CODE=$EXIT_CODE"
     - name: Upload test report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: newman-report
         path: newman-report.html
