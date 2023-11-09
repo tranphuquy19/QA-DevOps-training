@@ -10,7 +10,9 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
     return res.status(200).json({
         message: "Post todo list",
-        input: req.body,
+        body: req.body,
+        reqHeaders: req.headers,
+        reqObj: req,
     });
 });
 
