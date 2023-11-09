@@ -12,7 +12,7 @@ router.post("/", (req, res, next) => {
         message: "Post todo list",
         body: req.body,
         reqHeaders: req.headers,
-        reqObj: req,
+        reqIp: req.ip,
     });
 });
 
