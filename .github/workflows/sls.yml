@@ -34,9 +34,7 @@ jobs:
       run: |
         serverless config credentials --provider aws --key "$AWS_ACCESS_KEY_ID" --secret "$AWS_SECRET_ACCESS_KEY"
         serverless deploy --stage production --region us-east-1 --verbose
-    - name: Export API Gateway URL
-      id: export_api_gateway_url
-      run: |
+
         API_GATEWAY_URL=$(serverless info --stage production --region us-east-1 --verbose | awk '/HttpApiUrl/ {print $2}')
         echo "API_GATEWAY_URL=$API_GATEWAY_URL" >> $GITHUB_ENV
     - name: Run tests with Newman
