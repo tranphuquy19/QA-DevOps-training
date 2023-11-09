@@ -42,4 +42,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: newman-report
-        path: newman-report.html
+        path: |
+          newman-report.html
+          serverless/todo-api/newman-report.html
