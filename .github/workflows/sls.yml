@@ -37,12 +37,12 @@ jobs:
     - name: Export API Gateway URL
       id: export_api_gateway_url
       run: |
-        # echo "::set-output name=api_gateway_url::$(serverless info --stage production --region us-east-1 --verbose | awk '/HttpApiUrl/ {print $2}')"
-        echo "API_GATEWAY_URL=$(serverless info --stage production --region us-east-1 --verbose | awk '/HttpApiUrl/ {print $2}')" >> $GITHUB_ENV
+        API_GATEWAY_URL=$(serverless info --stage production --region us-east-1 --verbose | awk '/HttpApiUrl/ {print $2}')
+        echo "API_GATEWAY_URL=$API_GATEWAY_URL" >> $GITHUB_ENV
     - name: Run tests with Newman
       run: |
         set -x
-        newman run collection.json --env-var API_GATEWAY_URL=$API_GATEWAY_URL --reporters cli,htmlextra --reporter-htmlextra-export newman-report.html
+        newman run collection.json --env-var API_GATEWAY_URL=${{ env.API_GATEWAY_URL }} --reporters cli,htmlextra --reporter-htmlextra-export newman-report.html
     - name: Upload test report
       uses: actions/upload-artifact@v2
       with:
