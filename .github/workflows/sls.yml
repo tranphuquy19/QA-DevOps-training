@@ -40,7 +40,8 @@ jobs:
     - name: Run tests with Newman
       run: |
         set -x
-        newman run collection.json --env-var API_GATEWAY_URL=${{ env.API_GATEWAY_URL }} --reporters cli,htmlextra --reporter-htmlextra-export newman-report.html
+        newman run collection.json --env-var API_GATEWAY_URL=${{ env.API_GATEWAY_URL }} --reporters cli,htmlextra --reporter-htmlextra-export newman-report.html || EXIT_CODE=$?
+        echo "EXIT_CODE=$EXIT_CODE"
     - name: Upload test report
       uses: actions/upload-artifact@v2
       with:
