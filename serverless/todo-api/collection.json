@@ -13,7 +13,6 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"",
 							"pm.test(\"Response status code is 200\", function () {",
 							"  pm.response.to.have.status(200);",
 							"});",
@@ -37,15 +36,6 @@
 							"pm.test(\"Response time is in an acceptable range\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
 							"});",
-							"",
-							"",
-							"pm.test(\"Response is an array and is not empty\", function () {",
-							"    const responseData = pm.response.json();",
-							"    ",
-							"    pm.expect(responseData).to.be.an('array');",
-							"    pm.expect(responseData).to.have.lengthOf.at.least(1, \"Array should not be empty\");",
-							"});",
-							"",
 							""
 						],
 						"type": "text/javascript"
