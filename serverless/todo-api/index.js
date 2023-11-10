@@ -8,7 +8,7 @@ const todoRoutes = require("./routes/todo.api");
 
 app.get("/", (req, res, next) => {
   return res.status(200).json({
-    message: "Hello from root!",
+    message: "Hello from root! I'm a DevOps guy",
   });
 });
 
